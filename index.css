@@ -1,0 +1,58 @@
+/* ---------------------- */
+/*      Reset             */
+/* ---------------------- */
+
+/* Box Sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset Margin */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+/* Set up the body */
+body {
+  line-height: 1.5; /* By default 1.4 */
+  min-height: 100vh;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Form elements don't inherit fonts by default */
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+/* remove animation for people who've turned off */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
