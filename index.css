@@ -15,7 +15,7 @@
   --txt-clr-white: #ffffff;
 
   /* Fonts */
-  --fs-900: 9.375rem;
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
   --fs-800: 6.25rem;
   --fs-700: 3.5rem;
   --fs-600: 2rem;
@@ -28,6 +28,30 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media (min-width: 35em) {
+  :root {
+    /* Fonts */
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  :root {
+    /* Fonts */
+    --fs-900: 9.375rem;
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+  }
 }
 
 /* ---------------------- */
@@ -79,6 +103,8 @@ body {
   color: hsl(var(--txt-clr-white));
   background-color: hsl(var(--clr-dark));
   font-size: var(--fs-400);
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
 img,
@@ -114,6 +140,9 @@ textarea {
   display: flex;
   gap: var(--gap, 1rem);
 }
+.d-block {
+  display: block;
+}
 
 .grid {
   display: grid;
@@ -124,6 +153,39 @@ textarea {
   padding-inline: 2em;
   margin-inline: auto;
   max-width: 66rem;
+}
+
+.grid-container {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  padding-inline: 2rem;
+}
+
+.grid-container * {
+  max-width: 50ch;
+}
+
+@media (min-width: 45rem) {
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(
+        2rem,
+        1fr
+      );
+  }
+  .grid-container > *:first-child {
+    grid-column: 2;
+  }
+  .grid-container > *:last-child {
+    grid-column: 3;
+  }
+}
+
+.grid-container--home {
+  padding-bottom: max(6rem, 1vh);
+  align-items: end;
 }
 
 .sr-only {
@@ -251,12 +313,10 @@ textarea {
   position: relative;
   border-radius: 50%;
   z-index: 1;
-  display: grid;
+  display: inline-grid;
   place-items: center;
   padding: 0 2em;
   aspect-ratio: 1;
-  max-width: 15rem;
-  max-height: 15rem;
 }
 
 .large-btn::after {
@@ -355,4 +415,22 @@ textarea {
 .number-indicators > [aria-selected="true"] {
   background-color: hsl(var(--clr-white));
   color: var(--txt-clr-dark);
+}
+
+.home {
+  background-image: url(./assests/home/background-home-mobile.jpg);
+  background-size: cover;
+  background-position: bottom center;
+}
+
+@media (min-width: 35rem) {
+  .home {
+    background-image: url(./assests/home/background-home-tablet.jpg);
+  }
+}
+
+@media (min-width: 45rem) {
+  .home {
+    background-image: url(./assests/home/background-home-desktop.jpg);
+  }
 }
